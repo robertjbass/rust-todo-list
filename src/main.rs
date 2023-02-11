@@ -80,8 +80,8 @@ fn update_status(todos: &mut Vec<Todo>) {
     let result: Option<&Todo> = todos.iter().find(|todo: &&Todo| todo.id == long_ass_uuid_input.trim().to_string());
 
     if let Some(todo) = result {
-        let index = todos.iter().position(|x: &Todo| x.id == todo.id).unwrap();
-        let mut todo = &mut todos[index];
+        let index: usize = todos.iter().position(|x: &Todo| x.id == todo.id).unwrap();
+        let mut todo: &mut Todo = &mut todos[index];
         todo.completed = !todo.completed;
         println!("Task with ID {} is now {}", todo.id, if todo.completed { "completed" } else { "incomplete" });
     } else {
